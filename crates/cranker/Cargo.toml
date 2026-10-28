@@ -1,0 +1,32 @@
+[package]
+name = "drip"
+version = "0.1.0"
+edition = "2021"
+publish = false
+default-run = "drip"
+
+[lib]
+name = "drip"
+path = "src/lib.rs"
+
+[[bin]]
+name = "drip"
+path = "src/main.rs"
+
+[dependencies]
+solana-sdk = "1.18"
+solana-client = "1.18"
+solana-program = "1.18"
+spl-token = { version = "4.0", features = ["no-entrypoint"] }
+spl-associated-token-account = { version = "2.0", features = ["no-entrypoint"] }
+# Match the wrapper's engine pin exactly — otherwise two `percolator` crates
+# get linked into the graph with mismatched types. Wrapper `5cb331dd`
+# (origin/main, 2026-09-22) pins engine `4db11a8c`. A pre-merge
+# preview against a newer engine is built separately.
+percolator = { git = "https://github.com/aeyakovenko/percolator", rev = "4db11a8cb0053815e23a35d3a7d3edc265d8d866" }
+percolator-prog = { path = "../../upstream/percolator-prog" }
+solana-transaction-status = "1.18"
+solana-account-decoder = "1.18"
+bytemuck = { version = "1.14", features = ["derive", "min_const_generics"] }
+anyhow = "1"
+serde_json = "1"

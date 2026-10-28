@@ -1,0 +1,6 @@
+[workspace]
+resolver = "2"
+members = ["crates/cranker", "crates/bringup"]
+# The wrapper checkout (scripts/fetch_upstream.sh) is a path dependency, not
+# a member.
+exclude = ["upstream"]

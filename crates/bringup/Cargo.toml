@@ -1,0 +1,23 @@
+[package]
+name = "percolator-m1-bringup"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[[bin]]
+name = "m1_bringup"
+path = "src/main.rs"
+
+[dependencies]
+solana-sdk = "1.18"
+solana-client = "1.18"
+solana-program = "1.18"
+solana-transaction-status = "1.18"
+spl-token = { version = "4.0", features = ["no-entrypoint"] }
+spl-associated-token-account = { version = "2.0", features = ["no-entrypoint"] }
+# Wrapper `5cb331dd` (origin/main) pins engine `4db11a8c`. Deliberate
+# wrapper-pin, not a master-tip override.
+percolator = { git = "https://github.com/aeyakovenko/percolator", rev = "4db11a8cb0053815e23a35d3a7d3edc265d8d866" }
+# Reuse the wrapper's instruction encoder + state helpers.
+percolator-prog = { path = "../../upstream/percolator-prog" }
+anyhow = "1"

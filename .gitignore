@@ -1,0 +1,8 @@
+target/
+upstream/
+.solana-test-ledger/
+.preview/
+*.log
+.DS_Store
+.env
+keys/
